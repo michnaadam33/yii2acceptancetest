@@ -37,6 +37,9 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+        ],
         'db' => require(__DIR__ . '/db.php'),
         /*
         'urlManager' => [

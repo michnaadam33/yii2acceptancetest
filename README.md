@@ -8,5 +8,6 @@ Run tests
 
 ```
 cd tests/
+./codeception/bin/yii migrate
 codecept run acceptance
 ```
