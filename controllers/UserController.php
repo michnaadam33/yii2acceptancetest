@@ -104,6 +104,28 @@ class UserController extends Controller
     }
 
     /**
+     * Deletes an existing User model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionRole($id)
+    {
+        $model = $this->findModel($id);
+        $auth = Yii::$app->authManager;
+        $roleAdmin = $auth->getRole('admin');
+
+        if($auth->checkAccess($id,'admin')){
+            $auth->revoke($roleAdmin, $id);
+        }else {
+            $auth->assign($roleAdmin, $id);
+        }
+
+
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
+    /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

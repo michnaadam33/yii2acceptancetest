@@ -19,8 +19,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'id',
             'username',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {role}',
+                'buttons' => [
+                    'role' => function ($url, $model) {
+                        $auth = Yii::$app->authManager;
+                        if($auth->checkAccess($model->id,'admin')){
+                            return Html::a('<span class="glyphicon glyphicon-minus-sign"></span>', $url, [
+                                'title' => Yii::t('app', 'Remove admin'),
+                            ]);
+                        }
+                        return Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, [
+                            'title' => Yii::t('app', 'Add admin'),
+                        ]);
+                    }
+                ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+                    if ($action === 'role') {
+                        return \yii\helpers\Url::toRoute(['role', 'id' => $model->id]);
+                    }
+                }
+            ],
         ],
     ]); ?>
 </div>
