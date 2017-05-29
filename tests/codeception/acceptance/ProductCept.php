@@ -7,29 +7,19 @@ use tests\codeception\_pages\ProductPage;
 $I = new AcceptanceTester($scenario);
 $I->wantTo('ensure that login works');
 
-$loginPage = ProductPage::openBy($I);
+$productPage = ProductPage::openBy($I);
 
 $I->see('Products', 'h1');
 
 $I->amGoingTo('try to create product');
-$loginPage->goCreate();
+$productPage->goCreate();
 $I->see('Create Product', 'h1');
 
 $I->click('Create');
 $I->see('Name cannot be blank.');
 $I->fillField('#product-name', 'TEST');
-$I->selectOption('Product[place_id]', 'TEST2');
+$option = $I->grabTextFrom('Product[place_id] option:nth-child(1)');
+$I->selectOption("select", $option);
+$I->selectOption('Product[place_id]', $option);
 $I->click('Create');
 $I->see('TEST', 'h1');
-
-$I->amGoingTo('try to update product');
-$I->click('Update');
-$I->see('Update Product: TEST');
-$I->fillField('#product-name', 'TEST2');
-$I->click('Update');
-$I->see('TEST2', 'h1');
-
-$I->amGoingTo('try to delete product');
-$I->click('Delete');
-
-

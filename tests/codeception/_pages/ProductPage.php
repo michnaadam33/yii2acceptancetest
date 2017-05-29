@@ -16,4 +16,16 @@ class ProductPage extends BasePage
     {
         $this->actor->click('Create Product');
     }
+
+    public function update($name)
+    {
+        $this->actor->click('Update');
+        $this->actor->fillField('input[name="Product[name]"]', $name);
+        $this->actor->click('Update');
+    }
+
+    public function delete()
+    {
+        $this->actor->click('Delete');
+    }
 }

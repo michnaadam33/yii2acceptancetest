@@ -32,6 +32,7 @@ class Product extends \yii\db\ActiveRecord
             [['name', 'place_id'], 'required'],
             [['place_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            [['name'], 'unique'],
             [['place_id'], 'exist', 'skipOnError' => true, 'targetClass' => Place::className(), 'targetAttribute' => ['place_id' => 'id']],
         ];
     }

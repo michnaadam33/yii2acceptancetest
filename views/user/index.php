@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'title' => Yii::t('app', 'Remove admin'),
                             ]);
                         }
-                        return Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, [
+                        return Html::a('<span class="glyphicons glyphicon-plus-sign"></span>', $url, [
                             'title' => Yii::t('app', 'Add admin'),
                         ]);
                     }

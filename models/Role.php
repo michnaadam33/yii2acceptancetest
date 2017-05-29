@@ -5,21 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%place}}".
+ * This is the model class for table "product".
  *
  * @property integer $id
  * @property string $name
  *
- * @property Product[] $products
  */
-class Place extends \yii\db\ActiveRecord
+class Role extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%place}}';
+        return 'role';
     }
 
     /**
@@ -29,7 +28,6 @@ class Place extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'unique'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -43,13 +41,5 @@ class Place extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProducts()
-    {
-        return $this->hasMany(Product::className(), ['place_id' => 'id']);
     }
 }
