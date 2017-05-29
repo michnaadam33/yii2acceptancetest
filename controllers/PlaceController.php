@@ -101,8 +101,12 @@ class PlaceController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        if(!empty($model->products)){
+            \Yii::$app->session->setFlash('error', "Please, remove products from this place!");
+        }else{
+            $model->delete();
+        }
         return $this->redirect(['index']);
     }
 
