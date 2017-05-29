@@ -37,11 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]);
                     }
                 ],
-                'urlCreator' => function ($action, $model, $key, $index) {
-                    if ($action === 'role') {
-                        return \yii\helpers\Url::toRoute(['role', 'id' => $model->id]);
-                    }
-                }
             ],
         ],
     ]); ?>
