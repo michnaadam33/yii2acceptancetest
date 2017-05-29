@@ -14,10 +14,12 @@ use yii\behaviors\TimestampBehavior;
  * @property string $username
  * @property string $password_hash
  * @property string $auth_key
- * @property string $password write-only password
+ * @property string $password
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+
+    private $password;
 
     /**
      * @inheritdoc
@@ -27,13 +29,28 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    public function rules()
     {
         return [
-            TimestampBehavior::className(),
+            [['username','password_hash', 'password'], 'required'],
+            [['username'], 'unique'],
+            [['username'], 'string', 'max' => 255],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => 'Username',
+            'password' => 'Password',
         ];
     }
 
@@ -107,6 +124,14 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function setPassword($password)
     {
+        $this->password = $password;
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(){
+        return $this->password;
     }
 }
