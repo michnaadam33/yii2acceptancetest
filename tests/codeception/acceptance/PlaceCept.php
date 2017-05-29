@@ -5,7 +5,7 @@ use tests\codeception\_pages\PlacePage;
 /* @var $scenario Codeception\Scenario */
 
 $I = new AcceptanceTester($scenario);
-$I->wantTo('ensure that login works');
+$I->wantTo('ensure that place works');
 
 $placePage = PlacePage::openBy($I);
 

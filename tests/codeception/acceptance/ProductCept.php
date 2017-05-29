@@ -18,7 +18,7 @@ $I->see('Create Product', 'h1');
 $I->click('Create');
 $I->see('Name cannot be blank.');
 $I->fillField('#product-name', 'TEST');
-$option = $I->grabTextFrom('Product[place_id] option:nth-child(1)');
+$option = $I->grabTextFrom('#product-place_id option:nth-child(2)');
 $I->selectOption("select", $option);
 $I->selectOption('Product[place_id]', $option);
 $I->click('Create');
