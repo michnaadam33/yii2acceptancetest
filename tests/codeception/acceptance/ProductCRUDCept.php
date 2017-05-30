@@ -36,6 +36,7 @@ $I->moveBack(2);
 $productPage->update('TEST2',2);
 $I->see('TEST2', 'h1');
 
+
 $I->amGoingTo('try to delete product');
 $productPage->delete();
 $I->see("No results found.");

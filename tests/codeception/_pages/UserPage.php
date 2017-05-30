@@ -15,6 +15,7 @@ class UserPage extends BasePage
     public function create($username, $password)
     {
         $this->actor->click('Create User');
+        $this->actor->see('Password');
         $this->actor->fillField('input[name="User[username]"]', $username);
         $this->actor->fillField('input[name="User[password]"]', $password);
         $this->actor->click('Create');
@@ -23,6 +24,7 @@ class UserPage extends BasePage
     public function update($username, $password)
     {
         $this->actor->click('Update');
+        $this->actor->see('Password');
         $this->actor->fillField('input[name="User[username]"]', $username);
         $this->actor->fillField('input[name="User[password]"]', $password);
         $this->actor->click('Update');
