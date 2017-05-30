@@ -23,7 +23,7 @@ class ProductController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['GET'],
+                    'delete' => ['GET','POST'],
                 ],
             ],
         ];
