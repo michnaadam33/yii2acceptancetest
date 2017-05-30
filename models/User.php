@@ -134,4 +134,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function getPassword(){
         return $this->password;
     }
+
+    public function getRole(){
+        $auth = Yii::$app->authManager;
+        if($auth->checkAccess($this->id,'admin')){
+            return 'ADMIN_ROLE';
+        }
+        return 'USER_ROLE';
+    }
 }

@@ -19,6 +19,7 @@ if (method_exists($I, 'wait')) {
 }
 $I->expectTo('see user info');
 $I->see('Logout (adam)');
+$I->am('admin');
 
 $I->amGoingTo('try to create user');
 $userPage = UserPage::openBy($I);

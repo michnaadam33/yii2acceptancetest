@@ -22,10 +22,15 @@ $I->am('admin');
 $userPage = UserPage::openBy($I);
 $I->see('Users', 'h1');
 
-$I->wantTo('ensure that I can not create the same user name');
-$I->amGoingTo('try to create user name TEST');
-$userPage->create('TEST','TEST');
-$I->see('TEST', 'h1');
-$I->click('Users');
-$userPage->create('TEST','TEST');
-$I->see('Name "TEST" has already been taken.');
+$I->wantTo('ensure that I create user role user');
+$I->amGoingTo('try to create user name TEST-USER');
+$userPage->create('TEST-USER','TEST-USER');
+$I->see('TEST-USER', 'h1');
+$I->see('USER_ROLE', 'td');
+
+$I->wantTo('ensure that I can change role');
+$I->click('Add admin');
+$I->see('ADMIN_ROLE', 'td');
+$I->click('Remove admin');
+$I->see('USER_ROLE', 'td');
+

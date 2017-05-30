@@ -20,12 +20,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'btn btn-danger'
         ]) ?>
     </p>
+    <p>
+        <?php if(Yii::$app->authManager->checkAccess($model->id,'admin')) : ?>
+            <?= Html::a('Remove admin', ['user/role', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+        <?php else: ?>
+            <?= Html::a('Add admin', ['user/role', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?php endif;?>
+    </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'username',
+            'role'
         ],
     ]) ?>
 
