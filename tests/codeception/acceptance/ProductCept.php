@@ -5,8 +5,7 @@ use tests\codeception\_pages\ProductPage;
 /* @var $scenario Codeception\Scenario */
 
 $I = new AcceptanceTester($scenario);
-$I->wantTo('ensure that login works');
-
+$I->wantTo('ensure that I can create, update and delete product');
 $productPage = ProductPage::openBy($I);
 
 $I->see('Products', 'h1');
