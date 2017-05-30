@@ -22,13 +22,12 @@ $I->am('admin');
 $userPage = UserPage::openBy($I);
 $I->see('Users', 'h1');
 
-$I->wantTo('ensure that I create user role user');
+$I->wantTo('ensure that I create user role user and change role');
 $I->amGoingTo('try to create user name TEST-USER');
 $userPage->create('TEST-USER','TEST-USER');
 $I->see('TEST-USER', 'h1');
 $I->see('USER_ROLE', 'td');
 
-$I->wantTo('ensure that I can change role');
 $I->click('Add admin');
 $I->see('ADMIN_ROLE', 'td');
 $I->click('Remove admin');
