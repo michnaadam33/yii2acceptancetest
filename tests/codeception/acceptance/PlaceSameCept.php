@@ -15,5 +15,3 @@ $I->see('TEST', 'h1');
 $I->click('Places');
 $placePage->create('TEST');
 $I->see('Place name "TEST" has already been taken.');
-
-//Nie ma możliwość usuwanie lokalizacji do której jest przypisany przedmiot.
