@@ -3,27 +3,28 @@
 namespace tests\codeception\unit\controllers;
 
 use app\controllers\PlaceController;
+use app\controllers\SiteController;
 use Codeception\Specify;
 use yii\codeception\TestCase;
 use Mockery as m;
 
 /**
- * PlaceController implements the CRUD actions for Place model.
+ * SiteController
  */
-class PlaceControllerTest extends TestCase
+class SiteControllerTest extends TestCase
 {
     use Specify;
 
     public function testActionRole()
     {
         $module = m::mock('\yii\base\Module');
-        /** @var PlaceController $controller */
-        $controller = \Yii::createObject(PlaceController::class,[
+        /** @var SiteController $controller */
+        $controller = \Yii::createObject(SiteController::class,[
             'user',
             $module,
         ]);
 
-        $this->specify('Check product controller', function () use ($controller) {
+        $this->specify('Check site controller', function () use ($controller) {
             expect('behaviors', $controller->behaviors())->internalType('array');
         });
     }
